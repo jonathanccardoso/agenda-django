@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Agenda Compromisso</title>
+</head>
+<body>
+	<h1>Agenda Compromisso</h1>
+
+	<!-- error compromissos_list -->
+	{% if compromissos_list %}
+		{% for compromisso in compromissos_list %}
+			<p>Descrição do compromisso: {{ compromisso.descricao }}</p>
+			<p>Horário: {{ compromisso.horario }}</p>
+			<p>Detalhes: </p>
+			<p>------------</p>
+		{% endfor %}
+	{% else %}
+		<p>Nenhuma mensagem cadastrada</p>
+	{% endif %}
+
+
+	<a href="http://localhost:8000/admin/">Admin</a>
+</body>
+</html>
