@@ -6,12 +6,17 @@
 <body>
 	<h1>Agenda Compromisso</h1>
 
-	<!-- error compromissos_list -->
 	{% if compromissos_list %}
 		{% for compromisso in compromissos_list %}
-			<p>Descrição do compromisso: {{ compromisso.descricao }}</p>
-			<p>Horário: {{ compromisso.horario }}</p>
-			<p>Detalhes: </p>
+			{% if compromisso.horario|date:"M, d, Y" == data_hoje|date:"M, d, Y" %}
+				<b>Descrição do compromisso: {{ compromisso.descricao }}</b> <br>
+				<b>Horário: {{ compromisso.horario }}</b> <br>
+				<b><a href="/">Detalhes:</a></b> <br> <!-- para mostrar tudo sobre o compromisso -->
+			{% else %}
+				<p>Descrição do compromisso: {{ compromisso.descricao }}</p>
+				<p>Horário: {{ compromisso.horario }}</p>
+				<p><a href="/">Detalhes:</a></p>
+			{% endif %}
 			<p>------------</p>
 		{% endfor %}
 	{% else %}
@@ -19,6 +24,6 @@
 	{% endif %}
 
 
-	<a href="http://localhost:8000/admin/">Admin</a>
+	<a href="http://localhost:8000/admin/">Painel Admin</a>
 </body>
 </html>
