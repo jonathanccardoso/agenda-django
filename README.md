@@ -15,16 +15,23 @@ futuros (ordem crescente de data)
       (ok)
       -> link para a pagina de admin
 
+
     - (detalhes)
       -> são exibidas todas as informações do mesmo:
         - bem como todas as observações (texto) (foreing key)
-cadastradas relativas ao mesmo. 
+cadastradas relativas ao mesmo.
         - Ao final, deve exibir um formulário 
 para adicionar novas observações, além de um link de retorno à 
 página principal;
+
+
 
 (ok)
 * super user para gerenciar (crud-admin)
    - test
    - test99test@hotmail.com
    - test@test
+
+## virtualenv with python
+
+python -m venv wnea

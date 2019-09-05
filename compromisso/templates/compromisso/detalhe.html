@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Detalhe</title>
+</head>
+<body>
+
+	{% if observacoes %}
+        <h2>Observações</h2>
+        {% for observacao in observacoes %}
+            <b> - {{ observacao.observacao }}</b> <br><br>
+        {% endfor %}
+    {% else %}
+        <p>Nenhuma observação!</p>
+    {% endif %}
+
+	<form method="POST" action=".">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</body>
+</html>
