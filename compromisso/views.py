@@ -16,6 +16,7 @@ def index(request):
 def detalhe(request, compromisso_id):
 
     compromisso = get_object_or_404(Compromisso, pk=compromisso_id)
+    compromissos_list = Compromisso.objects.filter(pk=compromisso_id);
 
     form = ObservacoesForm()
     
@@ -31,6 +32,14 @@ def detalhe(request, compromisso_id):
     context = {
         'observacoes': observacoes,
         'form': form,
+        'compromissos_list': compromissos_list,
     }
 
     return render(request, 'compromisso/detalhe.html', context)
+
+
+def delete(request, observacao_id):
+    post = get_object_or_404(Observacoes, pk=observacao_id)
+    post.delete()
+    return HttpResponseRedirect('/')
+

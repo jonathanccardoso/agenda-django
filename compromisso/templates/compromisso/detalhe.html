@@ -5,10 +5,24 @@
 </head>
 <body>
 
+    <h2>Compromisso</h2>
+    {% for compromisso in compromissos_list %}
+        <p>Descrição do compromisso: {{ compromisso.descricao|truncatechars:20 }}</p>
+        <p>Horário: {{ compromisso.horario }}</p>
+        <p>------------</p>
+    {% endfor %}
+
 	{% if observacoes %}
         <h2>Observações</h2>
         {% for observacao in observacoes %}
-            <b> - {{ observacao.observacao }}</b> <br><br>
+            <b> - {{ observacao.observacao }}</b>
+            <form method="POST" action="{% url 'compromisso:delete' observacao.id %}">
+                {% csrf_token %}
+                <!-- {{ form.as_p }} -->
+                <button type="submit" class="save btn btn-default">Deletar</button>
+            </form>
+
+            <br><br>
         {% endfor %}
     {% else %}
         <p>Nenhuma observação!</p>
@@ -16,7 +30,7 @@
 
 	<form method="POST" action=".">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" class="save btn btn-default">Salvar</button>
     </form>
 </body>
 </html>
